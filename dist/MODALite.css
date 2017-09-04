@@ -36,8 +36,8 @@ body.fixed {
     background-color: #fff;
     width: 600px;
     height: auto;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 85%;
+    max-height: 85%;
     border-radius: 2px;
     -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .14), 0 1px 7px 0 rgba(0, 0, 0, .12), 0 3px 1px -1px rgba(0, 0, 0, .2);
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .14), 0 1px 7px 0 rgba(0, 0, 0, .12), 0 3px 1px -1px rgba(0, 0, 0, .2);
@@ -165,7 +165,6 @@ body.fixed {
 
 .modalite[data-modal-width="large"]>.dialog {
     width: 960px;
-    max-width: 80%;
 }
 
 .modalite[data-modal-width="full"]>.dialog {
@@ -273,11 +272,11 @@ body.fixed {
     padding: 0;
 }
 
-.modalite[data-modal-media="image"] .content img {
+.modalite[data-modal-media="image"]>.dialog>.content img {
     vertical-align: bottom;
     width: 100%;
-    height: auto;
     max-width: 100%;
+    height: auto;
 }
 
 .modalite[data-modal-media="ajax"]>.dialog>.content {
@@ -294,7 +293,6 @@ body.fixed {
 .modalite>.dialog> :first-child>img {
     border-radius: 2px;
     max-width: 100%;
-    max-height: 100%;
     vertical-align: bottom;
 }
 

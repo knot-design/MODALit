@@ -1,6 +1,6 @@
 /*
- Modalite v0.1.5
- https://knot-design.jp/MODALite/
+ Modalite v0.1.6
+ https://knot-design.jp/modalite/
 
  Author: Yuji Hisamatsu (https://github.com/knot-design)
 
@@ -80,7 +80,7 @@
                     media = _media(src);
                     content = media[0] || '<span class="loader"></span>';
                     opts.footer = media[1] !== 'ajax' ? false : opts.footer;
-                    modal.setAttribute('data-modal-media', media[1]) ;
+                    modal.setAttribute('data-modal-media', media[1]);
                     if (media[1] === 'video')
                         modal.setAttribute('data-modal-iframe', true);
                 } else {
@@ -142,6 +142,18 @@
             };
             xhr.send();
         },
+        _fixed = function (e) {
+            e.preventDefault();
+        },
+        _onScroll = function (bool, className) {
+            if(bool) {
+                d.body.classList.add(className);
+                d.body.addEventListener("touchmove", _fixed);
+            } else {
+                d.body.classList.remove(className);
+                d.body.removeEventListener("touchmove", _fixed);
+            }
+        },
         defaults = {
             backdrop: true,
             fixed: 'fixed',
@@ -180,6 +192,7 @@
     m.show = function (modal, e) {
         var queue = null,
             opts = this.options;
+        (1);
         this.listner = {};
         this.btn = {
             trigger: e && (e.currentTarget || e.target),
@@ -208,7 +221,7 @@
         });
         _calc(modal);
         this.modal = modal;
-        opts.backdrop && opts.fixed && d.body.classList.add(opts.fixed);
+        opts.backdrop && opts.fixed && _onScroll(true, opts.fixed);
     };
 
     m.hide = function (e) {
@@ -217,7 +230,8 @@
         if (flg) {
             this.modal.setAttribute("aria-hidden", "true");
             this.btn.trigger && this.btn.trigger.classList.remove('active');
-            opts.fixed && opts.backdrop && d.body.classList.remove(opts.fixed);
+            opts.fixed && opts.backdrop && _onScroll(false, opts.fixed);
+            _onScroll();
             if (this.listner.action) {
                 this.btn.action.removeEventListener("click", this.listner.action);
             }
