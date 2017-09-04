@@ -1,0 +1,30 @@
+{
+  "name": "MODALite",
+  "description": "A simple, lightweight and Responsive JavaScript modal/popup dialog library.",
+  "main": [
+    "dist/MODALite.min.css",
+    "dist/MODALite.min.js"
+  ],
+  "authors": [
+    {
+      "name": "Yuji Hisamatsu",
+      "homepage": "http://knot-design.jp/en/"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "MODALite",
+    "window",
+    "modal",
+    "dialog",
+    "popup",
+    "alert",
+    "javascript",
+    "js"
+  ],
+  "homepage": "https://knot-design.jp/MODALite/",
+  "ignore": [
+    "**/.*",
+    "demos"
+  ]
+}

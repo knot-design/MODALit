@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MODALite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../dist/MODALite.css">
+</head>
+
+<body>
+
+    <section id="demo">
+        <div class="container features align center">
+            <h2>DEMO</h2>
+            <div class="demo">
+                <h3>Transition</h3>
+                <ul>
+                    <li><button type="button" class="btn demo-transition" data-content="Zoom" data-transition="zoom">Zoom</button></li>
+                    <li><button type="button" class="btn demo-transition" data-content="Flip" data-transition="flip">Flip</button></li>
+                    <li><button type="button" class="btn demo-transition" data-content="Slide Left" data-transition="slideLeft">Slide Left</button></li>
+                    <li><button type="button" class="btn demo-transition" data-content="Slide Right" data-transition="slideRight">Slide Right</button></li>
+                    <li><button type="button" class="btn demo-transition" data-content="Slide Up" data-transition="slideUp">Slide Up</button></li>
+                    <li><button type="button" class="btn demo-transition" data-content="Slide Down" data-transition="slideDown">Slide Down</button></li>
+                </ul>
+            </div>
+            <div class="demo">
+                <h3>Position</h3>
+                <ul>
+                    <li><button type="button" class="btn demo-position" data-content="Default" data-transition="zoom">Default</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Left" data-position="left" data-transition="slideRight">Left</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Right" data-position="right" data-transition="slideLeft">Right</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Top" data-position="top" data-transition="slideDown">Top</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Bottom" data-position="bottom" data-transition="slideUp">Bottom</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Top Right" data-position="right top" data-transition="slideDown">Top Right</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Top Left" data-position="left top" data-transition="slideDown">Top Left</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Bottom Right" data-position="right bottom" data-transition="slideUp">Bottom Right</button></li>
+                    <li><button type="button" class="btn demo-position" data-content="Bottom Left" data-position="left bottom" data-transition="slideUp">Bottom Left</button></li>
+                </ul>
+            </div>
+            <div class="demo">
+                <h3>Media</h3>
+                <ul>
+                    <li><button type="button" class="btn demo-media" data-src="girl-1787357_1920.jpg">Image</button></li>
+                    <li><button type="button" class="btn demo-media" data-width="" data-src="https://www.youtube.com/watch?v=rmf54oNI6ts">Youtube</button></li>
+                    <li><button type="button" class="btn demo-media" data-title="Bacon Ipsum" data-src="http://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html">Ajax</button></li>
+                </ul>
+            </div>
+            <div class="demo">
+                <h3>Sizes</h3>
+                <ul>
+                    <li><button type="button" class="btn demo-size" data-width="small" data-content="Small dialog">Small</button></li>
+                    <li><button type="button" class="btn demo-size" data-width="large" data-content="Large dialog">Large</button></li>
+                    <li><button type="button" class="btn demo-size" data-width="full" data-footer="" data-content="Fullscreen dialog">Full</button></li>
+                </ul>
+            </div>
+            <div class="demo">
+                <h3>Confirm</h3>
+                <p><button type="button" class="btn demo-confirm">Confirm</button></p>
+            </div>
+            <div class="demo">
+                <h3>Body Scrolling</h3>
+                <ul>
+                    <li><button id="prevent" type="button" class="btn">Prevent</button></li>
+                    <li><button id="scrollable" type="button" class="btn">Scrollable</button></li>
+                </ul>
+            </div>
+            <div class="demo">
+                <h3>Backdrop</h3>
+                <p><button id="overlay" type="button" class="btn">Disable</button></p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="customize">
+        <div class="container features align center">
+
+            <h2>Customize</h2>
+            <div class="demo">
+                <h3>CSS</h3>
+                <p><button id="btnCss" type="button" class="btn">Custom Style</button></p>
+            </div>
+            
+            <div class="demo">
+                <h3>Form</h3>
+                <p><button id="btnLogin" type="button" data-target="#login" class="btn">Login</button><br><small>( ID:admin / PASS:1234 )</small></p>
+            </div>
+            <div class="demo">
+                <h3>Navigation</h3>
+                <p><button id="btnNav" type="button" class="btn">Sidebar</button></p>
+            </div>
+            <div class="demo">
+                <h3>Scroll</h3>
+                <div id="scroll">
+                    <p>Scroll down the page, the popup would be appear at the right side corner.</p>
+                    <p class="icon arrow"></p>
+                </div>
+                
+            </div>
+    
+        </div>
+    </section>
+
+  
+    <footer id="footer">
+        <div class="container align center">
+            <p><small><a href="https://knot-design.jp/en/">© 2017 Copyright Knot Design</a></small></p>
+        </div>
+    </footer>
+
+    <div id="login" class="modalite" aria-hidden="true">
+        <div class="dialog">
+            <header>
+                <h3>Login</h3>
+            </header>
+            <form class="content" name="login">
+                <p>
+                    <label>
+                        <input type="text" name="id" class="validate" required>
+                        <span class="label">ID</span>
+                    </label>
+                    <label>
+                        <input type="password" name="pswd" class="validate" required>
+                        <span class="label">PASS</span>
+                    </label>
+                </p>
+            </form>
+            <footer>
+                <p>
+                    <button type="button" data-modal-btn="dismiss" class="btn light">Cancel</button>
+                    <button type="button" data-modal-btn="action" class="btn primary">Login</button>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+
+    <div id="scroller" class="modalite" aria-hidden="true">
+        <div class="dialog">
+            <header>
+                <h3>Scrolling Popup</h3>
+            </header>
+            <div class="content">
+
+                <p>In the future, do not show this popup.</p>
+            </div>
+            <footer>
+                <p>
+                    <button type="button" data-modal-btn="dismiss" class="btn primary">Yep!</button>
+                </p>
+            </footer>
+        </div>
+    </div>
+    <!--[if lte IE 9]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script><![endif]-->
+
+    <script src="../dist/MODALite.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
