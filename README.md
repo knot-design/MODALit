@@ -12,6 +12,6 @@ It can be used to generate dialog with few lines of code.
 - CSS transition
 - CSS Animation
 
-##DEMO and Documents
+## DEMO and Documents
 https://knot-design.jp/MODALite/
 
