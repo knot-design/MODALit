@@ -26,5 +26,9 @@
   "ignore": [
     "**/.*",
     "demos"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knot-design/MODALite.git"
+  }
 }
