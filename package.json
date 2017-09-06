@@ -1,0 +1,28 @@
+{
+  "name": "modalit",
+  "moduleName": "MODALit",
+  "version": "0.1.6",
+  "description": "A simple, lightweight and Responsive JavaScript modal/popup dialog library.",
+  "main": "dist/MODALit.min.js",
+  "authors": [
+    {
+      "name": "Yuji Hisamatsu",
+      "homepage": "http://knot-design.jp/en/"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "MODALit",
+    "window",
+    "modal",
+    "dialog",
+    "popup",
+    "javascript",
+    "js"
+  ],
+  "homepage": "https://knot-design.jp/MODALit/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knot-design/MODALit.git"
+  }
+}
