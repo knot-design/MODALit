@@ -3,7 +3,7 @@
     function _init() {
         
         // Transition
-        new MODALite({
+        new MODALit({
             el: '.demo-transition',
             title: 'Transition',
             action: {
@@ -12,7 +12,7 @@
         });
 
         // Position
-        new MODALite({
+        new MODALit({
             el: '.demo-position',
             title: 'Position',
             action: {
@@ -22,14 +22,14 @@
         });
 
         // Media
-        new MODALite({
+        new MODALit({
             el: '.demo-media',
             footer: false,
             transition: 'zoom'
         });
 
         // Sizes
-        new MODALite({
+        new MODALit({
             el: '.demo-size',
             title: 'Sizes',
             footer: 'false',
@@ -40,14 +40,14 @@
         });
 
         // Body Scrolling - prevent
-        new MODALite({
+        new MODALit({
             el: '#prevent',
             title: 'Try to scroll down the page!',
             content: 'Prevent body scrolling. (default)',
             transition: 'zoom'
         });
         // Body Scrolling - scrollable
-        new MODALite({
+        new MODALit({
             el: '#scrollable',
             title: 'Try to scroll down the page!',
             content: 'Scrollable body.',
@@ -56,7 +56,7 @@
         });
 
         // Backdrop
-        new MODALite({
+        new MODALit({
             el: '#overlay',
             title: 'Disabled backdrop <small class="meta">(Background overlay)</small>',
             content: 'Click the Esc key!',
@@ -65,7 +65,7 @@
         });
 
         // Confirm
-        new MODALite({
+        new MODALit({
             el: '.demo-confirm',
             title: 'Confirm',
             content: 'Are you sure?',
@@ -84,7 +84,7 @@
         });
 
         // Custome Style
-        var css = new MODALite({
+        var css = new MODALit({
             el: '#btnCss',
             width: 'small',
             content: '<p>Dou you like it?</p>',
@@ -170,7 +170,7 @@
                 });
                 form.reset();
             },
-            login = new MODALite({
+            login = new MODALit({
                 el: '#btnLogin',
                 action: {
                     fn: action,
@@ -186,7 +186,7 @@
             });
 
         // Sidebar
-        var sidebar = new MODALite({
+        var sidebar = new MODALit({
             el: '#btnNav',
             width: 'full',
             title: 'MENU',
@@ -199,7 +199,7 @@
         sidebar.modal.id = 'sidebar';
 
         // Scroll
-        var scrl = new MODALite({
+        var scrl = new MODALit({
                 target: '#scroller',
                 backdrop: false,
                 position: 'right bottom',

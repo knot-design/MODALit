@@ -1,6 +1,6 @@
 /*
- Modalite v0.1.6
- https://knot-design.jp/modalite/
+ Modalit v0.1.6
+ https://knot-design.jp/modalit/
 
  Author: Yuji Hisamatsu (https://github.com/knot-design)
 
@@ -17,14 +17,14 @@
         module.exports = factory();
     } else {
         // Global
-        root.MODALite = factory();
+        root.MODALit = factory();
     }
 })(this, function () {
 
     'use strict';
 
     var d = document,
-        m = MODALite.prototype,
+        m = MODALit.prototype,
         _getElements = function (str, e, i) {
             e = e || d;
             e = !str.match(/\s/) && str[0].match(/(#|\.)/) ? (str[0] === '#' ? e.getElementById(str.slice(1)) : e.getElementsByClassName(str.slice(1))) : e.querySelectorAll(str);
@@ -101,7 +101,7 @@
                 if (opts[name])
                     modal.setAttribute("data-modal-" + name, opts[name]);
             });
-            modal.classList.add('modalite');
+            modal.classList.add('modalit');
             modal.setAttribute("aria-hidden", "true");
             opts.backdrop && modal.classList.add('backdrop');
             media[1] === 'ajax' && _request(src, function (response) {
@@ -173,7 +173,7 @@
             }
         };
 
-    function MODALite(opts) {
+    function MODALit(opts) {
         var element = !opts.el || typeof (opts.el) === "string" ? _getElements(opts.el || '[data-toggle="modal"]') : opts.el,
             cnt = element.length;
         if (cnt < 2) {
@@ -241,6 +241,6 @@
         }
     };
 
-    return MODALite;
+    return MODALit;
 
 });

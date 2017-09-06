@@ -1,4 +1,4 @@
-# MODALite
+# MODALit
 A simple, lightweight and Responsive JavaScript modal/popup dialog library.
 It can be used to generate dialog with few lines of code.
  
@@ -13,5 +13,5 @@ It can be used to generate dialog with few lines of code.
 - CSS Animation
 
 ## DEMO and Documents
-https://knot-design.jp/MODALite/
+https://knot-design.jp/MODALit/
 
