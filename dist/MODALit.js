@@ -1,5 +1,5 @@
 /*
- Modalit v0.1.6
+ Modalit v0.1.9
  https://knot-design.jp/modalit/
 
  Author: Yuji Hisamatsu (https://github.com/knot-design)
@@ -32,10 +32,12 @@
         },
         _calc = function (e) {
             var h = 0,
+                wh = window.innerHeight - 30,
                 dialog = e.firstElementChild,
+                media = e.getAttribute('data-modal-media'),
                 content = _getElements('.content', dialog, 1);
             if (e.getAttribute('data-modal-media') === 'ajax') {
-                content.style.height = 'auto';
+                content.style.height = '';
                 [].forEach.call(dialog.children, function (c) {
                     h += c.tagName.match(/(header|footer)/i) ? c.clientHeight : 0;
                 });
@@ -43,10 +45,22 @@
                 if (content.clientHeight > height) {
                     content.style.height = height + 'px';
                 }
+            } else if (e.getAttribute('data-modal-width') !== 'full' && /^(video|image)$/.test(media)) {
+                var remote = media === 'image' ? _getElements('img', content, 1) : content.firstElementChild;
+                if (remote) {
+                    dialog.style.width = '';
+                    if (wh < dialog.clientHeight + 30) {
+                        dialog.style.width = Math.round(wh * (remote.clientWidth / remote.clientHeight) * 0.9) + 'px';
+                    }
+                }
             }
-            if ((e.getAttribute('data-modal-width') !== 'full') && /^(centered|left|right)$/.test(e.getAttribute('data-modal-position'))) {
+            if (!e.classList.contains('backdrop') && (e.getAttribute('data-modal-width') !== 'full') && /^(centered|left|right)$/.test(e.getAttribute('data-modal-position'))) {
                 dialog.style.marginTop = -(dialog.offsetHeight / 2) + 'px';
             }
+        },
+        _remoteLoaded = function (e) {
+            e.setAttribute('data-modal-load', true);
+            _calc(e);
         },
         _merge = function (obj1, obj2) {
             for (var p in obj2) {
@@ -64,7 +78,7 @@
             return obj1;
         },
         _set = function (e, opts) {
-            var content, footer, media = [],
+            var content, footer,
                 target = e && e.getAttribute('data-target') ? e.getAttribute('data-target') : opts.target,
                 modal = target ? _getElements(target, 0, 1) : '',
                 src = e && e.getAttribute('data-src') ? e.getAttribute('data-src') : opts.src;
@@ -77,12 +91,7 @@
                 });
                 var header = opts.title ? '<header><h3>' + opts.title + '</h3></header>' : '';
                 if (src) {
-                    media = _media(src);
-                    content = media[0] || '<span class="loader"></span>';
-                    opts.footer = media[1] !== 'ajax' ? false : opts.footer;
-                    modal.setAttribute('data-modal-media', media[1]);
-                    if (media[1] === 'video')
-                        modal.setAttribute('data-modal-iframe', true);
+                    content = '<span class="loader"></span>';;
                 } else {
                     content = opts.content;
                 }
@@ -104,23 +113,43 @@
             modal.classList.add('modalit');
             modal.setAttribute("aria-hidden", "true");
             opts.backdrop && modal.classList.add('backdrop');
-            media[1] === 'ajax' && _request(src, function (response) {
-                _getElements('.content', modal, 1).innerHTML = response;
-                _calc(modal);
-            });
+            if (src) {
+                var c = _getElements('.content', modal, 1),
+                    media = _media(src, opts.autoplay);
+                modal.setAttribute('data-modal-media', media[1]);
+                modal.addEventListener("modalit.load", function () {
+                    if (media[1] === 'ajax') {
+                        _request(src, function (response) {
+                            c.innerHTML = response;
+                            _remoteLoaded(modal);
+                        })
+                    } else if (media[1] === 'image') {
+                        var img = new Image();
+                        img.src = src;
+                        img.addEventListener("load", function () {
+                            c.innerHTML = img.outerHTML;
+                            _remoteLoaded(modal);
+                        })
+                    } else {
+                        c.innerHTML = media[0];
+                        _remoteLoaded(modal);
+                    }
+                });
+            };
             _calc(modal);
             return modal;
         },
-        _media = function (url) {
+        _media = function (url, autoplay) {
             var youtube = url.match(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/),
                 vimeo = url.match(/\/\/(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/),
                 dailymotion = url.match(/.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/),
                 video = url.match(/^.+.(mp4|m4v|ogg|ogv|webm)$/),
+                unsplash =  url.match(/source\.unsplash\.com\/?/),
                 image = url.match(/^.+.(jpg|jpeg|gif|png|svg)$/i);
             if (video) {
-                return ['<video src="' + url + '" width="640" height="360" controls="true"></video>', 'embed'];
-            } else if (image) {
-                return ['<img src="' + url + '">', 'image'];
+                return ['<video src="' + url + '" width="640" height="360" controls="true"' + (autoplay ? ' autoplay' : '') + '></video>', 'video'];
+            } else if (image || unsplash) {
+                return [null, 'image'];
             } else {
                 if (youtube && youtube[1].length === 11) {
                     url = '//www.youtube.com/embed/' + youtube[1];
@@ -131,7 +160,7 @@
                 } else {
                     return [null, 'ajax'];
                 }
-                return ['<iframe src="' + url + '" allowfullscreen="true" width="640" height="360"></iframe>', 'video'];
+                return ['<iframe src="' + url + (autoplay ? '?autoplay=1' : '') + '" allowfullscreen="true" width="640" height="360"></iframe>', 'video'];
             }
         },
         _request = function (url, callback) {
@@ -146,7 +175,7 @@
             e.preventDefault();
         },
         _onScroll = function (bool, className) {
-            if(bool) {
+            if (bool) {
                 d.body.classList.add(className);
                 d.body.addEventListener("touchmove", _fixed);
             } else {
@@ -167,6 +196,7 @@
                 label: 'Cancel',
                 class: 'btn light'
             },
+            autoplay: true,
             dismiss: {
                 backdrop: true,
                 esc: true
@@ -192,7 +222,11 @@
     m.show = function (modal, e) {
         var queue = null,
             opts = this.options;
-        (1);
+        if (!modal.getAttribute('data-modal-load')) {
+            var evt = d.createEvent('Event');
+            evt.initEvent('modalit.load', true, false);
+            modal.dispatchEvent(evt);
+        }
         this.listner = {};
         this.btn = {
             trigger: e && (e.currentTarget || e.target),
@@ -237,6 +271,10 @@
             }
             if (this.listner.cancel) {
                 this.btn.cancel.removeEventListener("click", this.listner.cancel);
+            }
+            if (this.modal.getAttribute('data-modal-media') === 'video') {
+                this.modal.removeAttribute('data-modal-load');
+                _getElements('.content', this.modal, 1).innerHTML = '';
             }
         }
     };

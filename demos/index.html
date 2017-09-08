@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MODALite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MODALite Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
+    <!--[if lte IE 9]>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flexibility/2.0.1/flexibility.js">flexibility(document.documentElement);</script>
+    <![endif]-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../dist/MODALit.min.css">
 </head>
@@ -45,8 +49,8 @@
             <div class="demo">
                 <h3>Media</h3>
                 <ul>
-                    <li><button type="button" class="btn demo-media" data-src="girl-1787357_1920.jpg">Image</button></li>
-                    <li><button type="button" class="btn demo-media" data-width="" data-src="https://www.youtube.com/watch?v=rmf54oNI6ts">Youtube</button></li>
+                    <li><button type="button" class="btn demo-media" data-src="https://source.unsplash.com/user/ujeans/likes/1600x900">Image</button></li>
+                    <li><button type="button" class="btn demo-media" data-src="https://www.youtube.com/watch?v=rmf54oNI6ts">Youtube</button></li>
                     <li><button type="button" class="btn demo-media" data-title="Bacon Ipsum" data-src="http://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html">Ajax</button></li>
                 </ul>
             </div>
@@ -156,7 +160,6 @@
             </footer>
         </div>
     </div>
-    <!--[if lte IE 9]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script><![endif]-->
 
     <script src="../dist/MODALit.min.js"></script>
     <script src="script.js"></script>
