@@ -6,8 +6,9 @@ It can be used to generate dialog with few lines of code.
 - Simple & Lightweight. (2KB gzipped)
 - No-dependencies. (No jQuery required)
 - CommonJS / AMD support.
+- Automatically resize.
 - Async Image Loading
-- Support video embeds in modal (Youtube/Dailymotion/Vimeo/mp4/m4v/ogg/ogv/webm)
+- Support video embeds. (Youtube/Dailymotion/Vimeo/mp4/m4v/ogg/ogv/webm)
 
 ## Requirements
 - classList
