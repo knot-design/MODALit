@@ -9,6 +9,7 @@ It can be used to generate dialog with few lines of code.
 
 ## Requirements
 - classList
+- CSS Flexbox
 - CSS transition
 - CSS Animation
 
