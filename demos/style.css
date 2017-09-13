@@ -19,13 +19,13 @@ html {
 }
 
 body {
+    position: relative;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.42857143;
     color: #222;
     background-color: #fff;
 }
-
 @media (max-width: 600px) {
     body {
         font-size: 1rem;
