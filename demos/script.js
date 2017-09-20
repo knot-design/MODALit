@@ -21,13 +21,6 @@
             transition: 'zoom'
         });
 
-        // Media
-        new MODALit({
-            el: '.demo-media',
-            footer: false,
-            transition: 'zoom'
-        });
-
         // Sizes
         new MODALit({
             el: '.demo-size',
@@ -37,6 +30,57 @@
                 label: 'Close'
             },
             transition: 'zoom'
+        });
+
+        // Media
+        new MODALit({
+            el: '.demo-media',
+            footer: false,
+            transition: 'zoom'
+        });
+
+        // Gallery
+        new MODALit({
+            el: '.demo-gallery',
+            slider: true,
+            width: 'large',
+            navi: true,
+            footer: false,
+            transition: 'zoom'
+        });
+
+        // Confirm
+        new MODALit({
+            el: '.demo-confirm',
+            title: 'Confirm',
+            content: 'Are you sure?',
+            action: {
+                fn: function () {
+                    alert('Actioned!');
+                }
+            },
+            cancel: {
+                fn: function () {
+                    alert('Canceled!');
+                }
+            },
+            width: 'small',
+            transition: 'zoom'
+        });
+
+        // Nested
+        new MODALit({
+            el: '#btn-nested1',
+            footer: false,
+            width: 'full',
+            target: '#nested',
+            transition: 'zoom'
+        });
+        new MODALit({
+            el: '#btn-nested2',
+            title: 'Nested Dialog',
+            content: 'Are you satisfied with this?',
+            transition: 'slideUp'
         });
 
         // Body Scrolling - prevent
@@ -62,25 +106,6 @@
             content: 'Click the Esc key!',
             transition: 'slideUp',
             backdrop: false
-        });
-
-        // Confirm
-        new MODALit({
-            el: '.demo-confirm',
-            title: 'Confirm',
-            content: 'Are you sure?',
-            action: {
-                fn: function () {
-                    alert('Actioned!');
-                }
-            },
-            cancel: {
-                fn: function () {
-                    alert('Canceled!');
-                }
-            },
-            width: 'small',
-            transition: 'zoom'
         });
 
         // Custome Style

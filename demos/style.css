@@ -310,6 +310,9 @@ form p {
 .demo small {
     font-size: .7em;
 }
+.demo-gallery {
+    cursor: pointer;
+}
 
 
 #customize {
@@ -331,8 +334,21 @@ form p {
 /* --
        modalite
                -- */
-
-#sidebar>.dialog {
+#nested {
+    text-align: center;
+}
+#nested .dialog {
+}
+#nested .dialog .content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom 0;
+    margin-top: -40px;
+    padding: 0;
+}
+#sidebar .dialog {
     width: 300px;
     right: auto;
     background-color: rgba(26, 182, 255, .92);
